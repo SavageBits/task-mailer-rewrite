@@ -1,0 +1,32 @@
+body {
+    font-size: 16px;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/*li {*/
+    /*list-style-type: none;*/
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
+/*}*/
+
+.done-true {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.panel-heading button {
+    float: right;
+}
+
+.panel-body {
+    padding-left: 2px;
+}
+
+.task-checkbox {
+    float: left;
+    padding-right: 10px;
+}
