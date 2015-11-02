@@ -25,25 +25,25 @@
     <div ng-controller="TodoCtrl as todo">
         <div class="panel panel-info">
             <div class="panel-body">
-                <button ng-click="todo.doIt()">Click</button>
-                <!--<form ng-submit="todoList.addTodo()">-->
-                    <!--<div class="form-group">-->
-                        <!--<label for="inputTodoText">what</label>-->
-                        <!--<input class="form-control" id="inputTodoText" type="text" ng-model="todoList.todoText"  size="30"-->
-                               <!--placeholder="add new todo here">-->
-                    <!--</div>-->
-                    <!--<div class="form-group">-->
-                        <!--<label for="inputTodoDate">when</label>-->
-                        <!--<input class="form-control" id="inputTodoDate" type="date" ng-model="todoList.date">-->
-                    <!--</div>-->
-                    <!--<input class="btn btn-primary btn-sm" type="submit" value="add">-->
-                <!--</form>-->
+                <!--<button ng-click="todo.doIt()">Click</button>-->
+                <form ng-submit="todo.createTodo()">
+                    <div class="form-group">
+                        <label for="inputTodoText">what</label>
+                        <input class="form-control" id="inputTodoText" type="text" ng-model="todo.description"  size="30"
+                               placeholder="add new todo here">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTodoDate">when</label>
+                        <input class="form-control" id="inputTodoDate" type="date" ng-model="todo.date">
+                    </div>
+                    <input class="btn btn-primary btn-sm" type="submit" value="add">
+                </form>
             </div>
         </div>
 
         <!--&lt;!&ndash;[ <a href="" ng-click="todoList.archive()">archive</a> ]&ndash;&gt;-->
 
-        {{todo.todos}}
+
 
         <div class="panel panel-success">
             <div class="panel-heading">
