@@ -8,9 +8,8 @@ angular
         TodoSvc.todos = [];
 
         var fbUrl = 'https://shining-inferno-6516.firebaseio.com/';
-        var fbConnectionString = 'https://shining-inferno-6516.firebaseio.com/';
 
-        TodoSvc.database = new Firebase(fbConnectionString + 'tasks');
+        TodoSvc.database = new Firebase(fbUrl + 'tasks');
 
 
         TodoSvc.addTodo = function (task) {
