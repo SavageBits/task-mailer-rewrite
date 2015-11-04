@@ -47,7 +47,7 @@
 
         <div class="panel panel-success">
             <div class="panel-heading">
-                today <span class="badge">{{todoSvc.todos.length}}</span>
+                today <span class="badge">{{todo.todos.length}}</span>
             </div>
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="todo in todo.todos">
@@ -61,21 +61,21 @@
             </ul>
         </div>
 
-        <!--<div class="panel panel-warning">-->
-            <!--<div class="panel-heading">-->
-                <!--overdue <span class="badge">{{todoList.overdueTodos.length}}</span> <button ng-click="todoList.archive(todoList.overdueTodos)" type="button" class="btn btn-default btn-xs">refresh</button>-->
-            <!--</div>-->
-            <!--<ul class="list-group">-->
-                <!--<li class="list-group-item" ng-repeat="todo in todoList.overdueTodos">-->
-                    <!--<div class="task-checkbox">-->
-                        <!--<input ng-click="todoList.selectTask(todo.key, todo.done)" type="checkbox" ng-model="todo.done">-->
-                    <!--</div>-->
-                    <!--<div class="done-{{todo.done}}">-->
-                        <!--{{todo.text}}-->
-                    <!--</div>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                overdue <span class="badge">{{todo.overdueTodos.length}}</span> <button ng-click="todoList.archive(todoList.overdueTodos)" type="button" class="btn btn-default btn-xs">refresh</button>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="todo in todo.overdueTodos">
+                    <div class="task-checkbox">
+                        <input ng-click="todoList.selectTask(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
+                    </div>
+                    <div class="done-{{todo.done}}">
+                        {{todo.text}}
+                    </div>
+                </li>
+            </ul>
+        </div>
 
         <!--<div class="panel panel-info">-->
             <!--<div class="panel-heading">-->
