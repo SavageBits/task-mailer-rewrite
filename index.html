@@ -16,6 +16,7 @@
     <script src="js/src/todo/todoSvc.js"></script>
     <script src='js/firebase.js'></script>
     <script src="js/angularfire.min.js"></script>
+    <script src="vendor/moment.min.js"></script>
 
     <link rel="stylesheet" href="css/todo.css">
     <link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -25,7 +26,6 @@
     <div ng-controller="TodoCtrl as todo">
         <div class="panel panel-info">
             <div class="panel-body">
-                <!--<button ng-click="todo.doIt()">Click</button>-->
                 <form ng-submit="todo.createTodo()">
                     <div class="form-group">
                         <label for="inputTodoText">what</label>
@@ -40,10 +40,6 @@
                 </form>
             </div>
         </div>
-
-        <!--&lt;!&ndash;[ <a href="" ng-click="todoList.archive()">archive</a> ]&ndash;&gt;-->
-
-
 
         <div class="panel panel-success">
             <div class="panel-heading">
@@ -77,33 +73,33 @@
             </ul>
         </div>
 
-        <!--<div class="panel panel-info">-->
-            <!--<div class="panel-heading">-->
-                <!--anytime <span class="badge">{{todoList.anytimeTodos.length}}</span> <button type="button" class="btn btn-primary btn-xs">refresh</button>-->
-            <!--</div>-->
-            <!--<ul class="list-group">-->
-                <!--<li class="list-group-item" ng-repeat="todo in todoList.anytimeTodos">-->
-                    <!--<div class="task-checkbox">-->
-                        <!--<input ng-click="todoList.selectTask(todo.key, todo.done)" type="checkbox" ng-model="todo.done">-->
-                    <!--</div>-->
-                    <!--<span class="done-{{todo.done}}">{{todo.text}}</span>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                anytime <span class="badge">{{todo.anytimeTodos.length}}</span> <button type="button" class="btn btn-primary btn-xs">refresh</button>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="todo in todo.anytimeTodos">
+                    <div class="task-checkbox">
+                        <input ng-click="todoList.selectTask(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
+                    </div>
+                    <span class="done-{{todo.done}}">{{todo.text}}</span>
+                </li>
+            </ul>
+        </div>
 
-        <!--<div class="panel panel-info">-->
-            <!--<div class="panel-heading">-->
-                <!--future <span class="badge">{{todoList.todos.length}}</span> <button id="btn-refresh-future" ng-click="todoList.archive(todoList.todos)" type="button" class="btn btn-primary btn-xs">refresh</button>-->
-            <!--</div>-->
-            <!--<ul class="list-group">-->
-                <!--<li class="list-group-item" ng-repeat="todo in todoList.todos">-->
-                    <!--<div class="task-checkbox">-->
-                        <!--<input ng-click="todoList.selectTask(todo.key, todo.done)" type="checkbox" ng-model="todo.done">-->
-                    <!--</div>-->
-                    <!--<span class="done-{{todo.done}}">{{todo.date}}: {{todo.text}}</span>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                future <span class="badge">{{todo.futureTodos.length}}</span> <button id="btn-refresh-future" ng-click="todoList.archive(todoList.todos)" type="button" class="btn btn-primary btn-xs">refresh</button>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="todo in todo.futureTodos">
+                    <div class="task-checkbox">
+                        <input ng-click="todoList.selectTask(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
+                    </div>
+                    <span class="done-{{todo.done}}">{{todo.date}}: {{todo.text}}</span>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 

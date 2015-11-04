@@ -5,6 +5,8 @@ function TodoCtrl(todoSvc) {
     vm.data = todoSvc.loadTodos();
     vm.todos =  todoSvc.getTodos();
     vm.overdueTodos = todoSvc.getOverdueTodos();
+    vm.futureTodos = todoSvc.getFutureTodos();
+    vm.anytimeTodos = todoSvc.getAnytimeTodos();
 
     var doIt = function() {
         alert('hey');
