@@ -1,5 +1,5 @@
 //this is good but we're using firebase - http://stackoverflow.com/questions/21989300/calling-service-for-factory-in-controller
-
+//todo: create service here and pass into .factory at bottom of file instead of wrapping in anonymous function
 angular
     .module('app')
     .factory('todoSvc', function($http, $firebaseObject) {
