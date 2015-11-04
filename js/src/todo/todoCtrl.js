@@ -16,8 +16,13 @@ function TodoCtrl(todoSvc) {
         todoSvc.createTodo(vm.description, vm.date);
     };
 
+    var updateTodo = function(key, done) {
+        todoSvc.updateTodo(key, done);
+    };
+
     vm.doIt = doIt;
     vm.createTodo = createTodo;
+    vm.updateTodo = updateTodo;
 }
 
 angular
