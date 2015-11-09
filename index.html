@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         <label for="inputTodoDate">when</label>
-                        <input class="form-control" id="inputTodoDate" type="date" ng-model="todoCtrl.date">
+                        <input class="form-control" id="inputTodoDate" type="date" ng-model="todoCtrl.taskDate">
                     </div>
                     <input class="btn btn-primary btn-sm" type="submit" value="add">
                 </form>
@@ -48,7 +48,7 @@
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="todo in todoCtrl.todos">
                     <div class="task-checkbox">
-                        <input ng-click="todoCtrl.updateTodo(todo.key, todo.done)" type="checkbox" ng-model="todoCtrl.done">
+                        <input ng-click="todoCtrl.updateTodo(todo.key, todoCtrl.done)" type="checkbox" ng-model="todoCtrl.done">
                     </div>
                     <div class="done-{{todo.done}}">
                         {{todo.text}}
@@ -80,7 +80,7 @@
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="todo in todoCtrl.anytimeTodos">
                     <div class="task-checkbox">
-                        <input ng-click="todoList.selectTask(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
+                        <input ng-click="todoCtrl.updateTodo(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
                     </div>
                     <span class="done-{{todo.done}}">{{todo.text}}</span>
                 </li>

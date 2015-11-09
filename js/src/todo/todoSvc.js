@@ -72,10 +72,15 @@ function TodoSvc($firebaseObject) {
         });
     };
 
-    TodoSvc.createTodo = function(description, date) {
+    TodoSvc.createTodo = function(description, taskDate) {
+        console.log(description + ': ' + taskDate);
+
+        //for an "anytime" task, date can be null
+        taskDate = taskDate == null ? null : taskDate.getTime();
+
         this.database.push({
             description: description,
-            date: date,
+            date: taskDate,
             done: false
         });
     };

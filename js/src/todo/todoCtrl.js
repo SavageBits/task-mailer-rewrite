@@ -8,19 +8,16 @@ function TodoCtrl(todoSvc) {
     vm.futureTodos = todoSvc.getFutureTodos();
     vm.anytimeTodos = todoSvc.getAnytimeTodos();
 
-    var doIt = function() {
-        alert('hey');
-    };
-
     var createTodo = function() {
-        todoSvc.createTodo(vm.description, vm.date);
+        todoSvc.createTodo(vm.description, vm.taskDate);
+        //console.log(vm.description + ': ' + vm.date);
     };
 
     var updateTodo = function(key, done) {
+        console.log(key + ' : ' + done);
         todoSvc.updateTodo(key, done);
     };
 
-    vm.doIt = doIt;
     vm.createTodo = createTodo;
     vm.updateTodo = updateTodo;
 }
