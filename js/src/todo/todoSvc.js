@@ -1,6 +1,6 @@
 //this is good but we're using firebase - http://stackoverflow.com/questions/21989300/calling-service-for-factory-in-controller
 
-function TodoSvc(todoDb, $firebaseObject) {
+function TodoSvc(todoDb) {
     var TodoSvc = {};
 
     TodoSvc.todos = [];
@@ -8,10 +8,10 @@ function TodoSvc(todoDb, $firebaseObject) {
     TodoSvc.futureTodos = [];
     TodoSvc.anytimeTodos = [];
 
-    var fbUrl = 'https://shining-inferno-6516.firebaseio.com/';
-    TodoSvc.fbUrl = fbUrl;
-
-    TodoSvc.database = new Firebase(fbUrl + 'tasks');
+    //var fbUrl = 'https://shining-inferno-6516.firebaseio.com/';
+    //TodoSvc.fbUrl = fbUrl;
+    //
+    //TodoSvc.database = new Firebase(fbUrl + 'tasks');
 
     TodoSvc.getTodos = function () {
         //should this be var self = this; return self.todos;?
@@ -73,8 +73,6 @@ function TodoSvc(todoDb, $firebaseObject) {
     };
 
     TodoSvc.createTodo = function(description, taskDate) {
-        console.log(description + ': ' + taskDate);
-
         //for an "anytime" task, date can be null
         taskDate = taskDate == null ? null : taskDate.getTime();
 
@@ -99,7 +97,6 @@ function TodoSvc(todoDb, $firebaseObject) {
         var fbObject = todoDb.loadTodos(function() {
             //console.log('loaded');
             todoDb.getTodos().forEach(function(task) {
-                console.log('TodoSvc:' + task.val().description);
                 self.addTodo(task);
             });
         });

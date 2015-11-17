@@ -8,11 +8,6 @@ function TodoDb($firebaseObject) {
 
     TodoDb.database = new Firebase(fbUrl + 'tasks');
 
-    TodoDb.doIt = function() {
-        var self = this;
-        //console.log('fbUrl: ' + self.fbUrl);
-    };
-
     TodoDb.getTodos = function() {
         var self = this;
 
@@ -24,7 +19,6 @@ function TodoDb($firebaseObject) {
 
         self.database.orderByChild("done").equalTo(false).on("child_added", function(task) {
             self.todos.push(task);
-            //console.log(task.val().description);
         });
 
         var databaseObject = $firebaseObject(self.database);
