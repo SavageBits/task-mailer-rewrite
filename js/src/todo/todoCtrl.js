@@ -10,6 +10,8 @@ function TodoCtrl(todoSvc) {
 
     var createTodo = function() {
         todoSvc.createTodo(vm.description, vm.taskDate);
+
+        vm.description = '';
         //console.log(vm.description + ': ' + vm.date);
     };
 

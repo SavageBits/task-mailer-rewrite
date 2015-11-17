@@ -1,6 +1,6 @@
 //this is good but we're using firebase - http://stackoverflow.com/questions/21989300/calling-service-for-factory-in-controller
 
-function TodoSvc($firebaseObject) {
+function TodoSvc(todoDb, $firebaseObject) {
     var TodoSvc = {};
 
     TodoSvc.todos = [];
@@ -95,15 +95,21 @@ function TodoSvc($firebaseObject) {
     TodoSvc.loadTodos = function() {
         var self = this;
 
-        this.database.orderByChild("done").equalTo(false).on("child_added", function(task) {
-            self.addTodo(task);
+        //this has to be a callback/promise pattern - or does it? can binding save us here?
+        var fbObject = todoDb.loadTodos(function() {
+            //console.log('loaded');
+            todoDb.getTodos().forEach(function(task) {
+                console.log('TodoSvc:' + task.val().description);
+                self.addTodo(task);
+            });
         });
 
-        return $firebaseObject(self.database);
+        return fbObject;
     };
 
     return TodoSvc;
 }
+
 angular
     .module('app')
     .factory('todoSvc', TodoSvc);
