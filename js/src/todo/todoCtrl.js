@@ -3,6 +3,7 @@ function TodoCtrl(todoSvc) {
     var vm = this; // capture context as vm which stands for View Model
 
     vm.data = todoSvc.loadTodos();
+
     vm.todos =  todoSvc.getTodos();
     vm.overdueTodos = todoSvc.getOverdueTodos();
     vm.futureTodos = todoSvc.getFutureTodos();
@@ -12,11 +13,9 @@ function TodoCtrl(todoSvc) {
         todoSvc.createTodo(vm.description, vm.taskDate);
 
         vm.description = '';
-        //console.log(vm.description + ': ' + vm.date);
     };
 
     var updateTodo = function(key, done) {
-        console.log(key + ' : ' + done);
         todoSvc.updateTodo(key, done);
     };
 

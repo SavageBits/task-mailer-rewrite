@@ -28,6 +28,24 @@ function TodoDb($firebaseObject) {
         return databaseObject;
     };
 
+    TodoDb.createTodo = function(taskDescription, taskDate, done) {
+        var self = this;
+
+        self.database.push({
+            description: taskDescription,
+            date: taskDate,
+            done: done
+        });
+    };
+
+    TodoDb.updateTodo = function(key, done) {
+        var self = this;
+
+        var taskRef = new Firebase(self.fbUrl + 'tasks/' + key);
+
+        taskRef.child('done').set(done);
+    };
+
     return TodoDb;
 }
 

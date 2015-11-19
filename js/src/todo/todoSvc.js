@@ -8,11 +8,6 @@ function TodoSvc(todoDb) {
     TodoSvc.futureTodos = [];
     TodoSvc.anytimeTodos = [];
 
-    //var fbUrl = 'https://shining-inferno-6516.firebaseio.com/';
-    //TodoSvc.fbUrl = fbUrl;
-    //
-    //TodoSvc.database = new Firebase(fbUrl + 'tasks');
-
     TodoSvc.getTodos = function () {
         //should this be var self = this; return self.todos;?
         return this.todos;
@@ -72,22 +67,15 @@ function TodoSvc(todoDb) {
         });
     };
 
-    TodoSvc.createTodo = function(description, taskDate) {
+    TodoSvc.createTodo = function(taskDescription, taskDate) {
         //for an "anytime" task, date can be null
         taskDate = taskDate == null ? null : taskDate.getTime();
 
-        this.database.push({
-            description: description,
-            date: taskDate,
-            done: false
-        });
+        todoDb.createTodo(taskDescription, taskDate, false);
     };
 
     TodoSvc.updateTodo = function(key, done) {
-        var self = this;
-        var taskRef = new Firebase(self.fbUrl + 'tasks/' + key);
-
-        taskRef.child('done').set(done);
+        todoDb.updateTodo(key, done);
     };
 
     TodoSvc.loadTodos = function() {
@@ -95,7 +83,6 @@ function TodoSvc(todoDb) {
 
         //this has to be a callback/promise pattern - or does it? can binding save us here?
         var fbObject = todoDb.loadTodos(function() {
-            //console.log('loaded');
             todoDb.getTodos().forEach(function(task) {
                 self.addTodo(task);
             });
