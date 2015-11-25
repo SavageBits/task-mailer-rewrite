@@ -4,6 +4,9 @@ function TodoDb($firebaseObject) {
     var fbUrl = 'https://shining-inferno-6516.firebaseio.com/';
     TodoDb.fbUrl = fbUrl;
 
+    var fbTaskUrl = fbUrl + 'tasks/';
+    TodoDb.fbTaskUrl = fbTaskUrl;
+
     TodoDb.todos = [];
 
     TodoDb.database = new Firebase(fbUrl + 'tasks');
@@ -41,7 +44,7 @@ function TodoDb($firebaseObject) {
     TodoDb.updateTodo = function(key, done) {
         var self = this;
 
-        var taskRef = new Firebase(self.fbUrl + 'tasks/' + key);
+        var taskRef = new Firebase(self.fbTaskUrl + key);
 
         taskRef.child('done').set(done);
     };
