@@ -32,12 +32,12 @@ gulp.task('open', ['connect'], function() {
 });
 
 gulp.task('html', function() {
-    gulp.src(config.paths.html)
+    gulp.src('')
         .pipe(connect.reload());
 });
 
 gulp.task('js', function() {
-    gulp.src(config.paths.js)
+    gulp.src('')
         .pipe(connect.reload());
 });
 
