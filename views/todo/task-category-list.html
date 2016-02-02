@@ -1,0 +1,13 @@
+<div class="panel-heading">
+    {{taskType.name}} <span class="badge">{{taskType.todos.length}}</span>
+</div>
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="todo in taskType.todos">
+        <div class="task-checkbox">
+            <input ng-click="updateTodo(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
+        </div>
+        <div class="done-{{todo.done}}">
+            {{todo.text}}
+        </div>
+    </li>
+</ul>

@@ -11,10 +11,8 @@
     <link rel="apple-touch-icon" href="images/logo_48x48.png">
 
     <script src="js/angular.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/src/todo/todoCtrl.js"></script>
-    <script src="js/src/todo/todoSvc.js"></script>
-    <script src="js/src/common/services/todoDb.js"></script>
+    <script src="js/bundle.js"></script>
+
     <script src='vendor/firebase.js'></script>
     <script src="vendor/angularfire.min.js"></script>
     <script src="vendor/moment.min.js"></script>
@@ -23,70 +21,13 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/bootstrap-theme.min.css">
 </head>
 <body>
+
 <div class="container">
     <div ng-controller="TodoCtrl as todoCtrl">
-        <div class="panel panel-info">
-            <div class="panel-body">
-                <form ng-submit="todoCtrl.createTodo()">
-                    <div class="form-group">
-                        <label for="inputTodoText">what's happening</label>
-                        <input class="form-control" id="inputTodoText" type="text" ng-model="todoCtrl.description"  size="30"
-                               placeholder="add new todo here">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputTodoDate">when it be</label>
-                        <input class="form-control" id="inputTodoDate" type="date" ng-model="todoCtrl.taskDate">
-                    </div>
-                    <input class="btn btn-primary btn-sm" type="submit" value="add">
-                </form>
-            </div>
-        </div>
-
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                today <span class="badge">{{todoCtrl.todos.length}}</span>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="todo in todoCtrl.todos">
-                    <div class="task-checkbox">
-                        <input ng-click="todoCtrl.updateTodo(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
-                    </div>
-                    <div class="done-{{todo.done}}">
-                        {{todo.text}}
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                overdue <span class="badge">{{todoCtrl.overdueTodos.length}}</span> <button ng-click="todoList.archive(todoList.overdueTodos)" type="button" class="btn btn-default btn-xs">refresh</button>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="todo in todoCtrl.overdueTodos">
-                    <div class="task-checkbox">
-                        <input ng-click="todoCtrl.updateTodo(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
-                    </div>
-                    <div class="done-{{todo.done}}">
-                        {{todo.text}}
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                anytime <span class="badge">{{todoCtrl.anytimeTodos.length}}</span> <button type="button" class="btn btn-primary btn-xs">refresh</button>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="todo in todoCtrl.anytimeTodos">
-                    <div class="task-checkbox">
-                        <input ng-click="todoCtrl.updateTodo(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
-                    </div>
-                    <span class="done-{{todo.done}}">{{todo.text}}</span>
-                </li>
-            </ul>
-        </div>
+        <div class="panel panel-info" create-todo-form></div>
+        <div class="panel panel-success" task-category-list task-type="today" update-todo="updateTodo"></div>
+        <div class="panel panel-warning" task-category-list task-type="overdue"  update-todo="updateTodo"></div>
+        <div class="panel panel-info" task-category-list task-type="anytime" update-todo="updateTodo"></div>
 
         <div class="panel panel-info">
             <div class="panel-heading">

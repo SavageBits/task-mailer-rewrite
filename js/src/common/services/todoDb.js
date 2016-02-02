@@ -22,6 +22,7 @@ function TodoDb($firebaseObject) {
 
         self.database.orderByChild("done").equalTo(false).on("child_added", function(task) {
             self.todos.push(task);
+            //console.log(task.val().description);
         });
 
         var databaseObject = $firebaseObject(self.database);

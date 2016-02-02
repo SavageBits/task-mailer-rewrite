@@ -84,7 +84,7 @@ function TodoSvc(todoDb) {
         //this has to be a callback/promise pattern - or does it? can binding save us here?
         var fbObject = todoDb.loadTodos(function() {
             todoDb.getTodos().forEach(function(task) {
-                self.addTodo(task);
+                self.addTodo(task);                
             });
         });
 

@@ -3,19 +3,26 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
 var open = require('gulp-open');
+var uglify = require('gulp-uglify');
+var ngAnnotate = require('gulp-ng-annotate'); //handles dependency injection annotations for minification safety
+var concat = require('gulp-concat');
 
 var config = {
     port: 9006,
     devBaseUrl: 'http://localhost',
     paths: {
-        html: 'index.html',
-        js: './src/**/*.js'
+        html: [
+          'index.html',
+          './views/**/*.html'
+        ],
+        js: './js/src/**/*.js',
+        bundleDest: './js'
     },
     browser: 'firefox'
 };
 
 gulp.task('connect', function() {
-    connect.server({
+    return connect.server({
         root: ['.'],
         port: config.port,
         base: config.devBaseUrl,
@@ -24,7 +31,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('open', ['connect'], function() {
-    gulp.src('')
+    return gulp.src('')
         .pipe(open({
             app: config.browser,
             uri: config.devBaseUrl + ':' + config.port + '/'
@@ -32,12 +39,16 @@ gulp.task('open', ['connect'], function() {
 });
 
 gulp.task('html', function() {
-    gulp.src('')
+    gulp.src(config.paths.html)
         .pipe(connect.reload());
 });
 
 gulp.task('js', function() {
-    gulp.src('')
+    gulp.src(config.paths.js)
+        .pipe(ngAnnotate())
+        .pipe(concat('bundle.js'))
+        //.pipe(uglify())
+        .pipe(gulp.dest(config.paths.bundleDest))
         .pipe(connect.reload());
 });
 
@@ -46,4 +57,4 @@ gulp.task('watch', function() {
     gulp.watch(config.paths.js, ['js']);
 });
 
-gulp.task('default', ['open', 'watch']);
+gulp.task('default', ['open', 'js', 'watch']);

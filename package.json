@@ -4,9 +4,12 @@
   "description": "A rewrite of a toy app written in AngularJS. This version focuses on separation of concerns and moving logic out of the controller and into appropriate models and services.",
   "main": "gulpfile.js",
   "dependencies": {
-    "gulp-connect": "^2.2.0",
     "gulp": "^3.9.0",
-    "gulp-open": "^1.0.0"
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-open": "^1.0.0",
+    "gulp-uglify": "^1.5.1"
   },
   "devDependencies": {},
   "scripts": {
