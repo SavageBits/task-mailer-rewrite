@@ -8,7 +8,7 @@ angular.module('app',["firebase"]);
 
 function CreateTodoForm() {
   return {
-    templateUrl: "/views/todo/create-todo-form.html"
+    templateUrl: "views/todo/create-todo-form.html"
   }
 }
 
@@ -23,7 +23,7 @@ function TaskCategoryList() {
         taskType: "=",
         updateTodo: "="
       },
-      templateUrl: "/views/todo/task-category-list.html"
+      templateUrl: "views/todo/task-category-list.html"
     };
 }
 

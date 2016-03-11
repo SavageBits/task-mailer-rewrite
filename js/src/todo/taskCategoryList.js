@@ -5,7 +5,7 @@ function TaskCategoryList() {
         taskType: "=",
         updateTodo: "="
       },
-      templateUrl: "/views/todo/task-category-list.html"
+      templateUrl: "views/todo/task-category-list.html"
     };
 }
 
