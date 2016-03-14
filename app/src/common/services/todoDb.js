@@ -16,6 +16,8 @@ function TodoDb($firebaseObject) {
 
         return self.todos;
     };
+    
+    TodoDb.lastInsertedRecord = {};
 
     TodoDb.loadTodos = function(successFunction) {
         var self = this;
@@ -32,14 +34,15 @@ function TodoDb($firebaseObject) {
         return databaseObject;
     };
 
-    TodoDb.createTodo = function(taskDescription, taskDate, done) {
+    TodoDb.createTodo = function(taskDescription, taskDate, done, callback) {
         var self = this;
 
-        self.database.push({
+        self.lastInsertedRecord = self.database.push({
             description: taskDescription,
             date: taskDate,
             done: done
-        });
+        },
+        callback);        
     };
 
     TodoDb.updateTodo = function(key, done) {

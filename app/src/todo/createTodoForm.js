@@ -1,6 +1,6 @@
 function CreateTodoForm() {
   return {
-    templateUrl: "views/todo/create-todo-form.html"
+    templateUrl: "app/src/todo/create-todo-form.html"
   }
 }
 

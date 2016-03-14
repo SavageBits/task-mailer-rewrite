@@ -10,8 +10,8 @@
 
     <link rel="apple-touch-icon" href="images/logo_48x48.png">
 
-    <script src="js/angular.min.js"></script>
-    <script src="js/bundle.js"></script>
+    <script src="vendor/angular.js"></script>
+    <script src="bundle.js"></script>
 
     <script src='vendor/firebase.js'></script>
     <script src="vendor/angularfire.min.js"></script>
@@ -23,20 +23,20 @@
 <body>
 
 <div class="container">
-    <div ng-controller="TodoCtrl as todoCtrl">
+    <div ng-controller="TodoCtrl as vm">
         <div class="panel panel-info" create-todo-form></div>
-        <div class="panel panel-success" task-category-list task-type="today" update-todo="updateTodo"></div>
-        <div class="panel panel-warning" task-category-list task-type="overdue"  update-todo="updateTodo"></div>
-        <div class="panel panel-info" task-category-list task-type="anytime" update-todo="updateTodo"></div>
+        <div class="panel panel-success" task-category-list task-type="today" update-todo="vm.updateTodo"></div>
+        <div class="panel panel-warning" task-category-list task-type="overdue"  update-todo="vm.updateTodo"></div>
+        <div class="panel panel-info" task-category-list task-type="anytime" update-todo="vm.updateTodo"></div>
 
         <div class="panel panel-info">
             <div class="panel-heading">
-                future <span class="badge">{{todoCtrl.futureTodos.length}}</span> <button id="btn-refresh-future" ng-click="todoList.archive(todoList.todos)" type="button" class="btn btn-primary btn-xs">refresh</button>
+                future <span class="badge">{{vm.futureTodos.length}}</span> <button id="btn-refresh-future" ng-click="todoList.archive(todoList.todos)" type="button" class="btn btn-primary btn-xs">refresh</button>
             </div>
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="todo in todoCtrl.futureTodos">
+                <li class="list-group-item" ng-repeat="todo in vm.futureTodos">
                     <div class="task-checkbox">
-                        <input ng-click="todoCtrl.updateTodo(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
+                        <input ng-click="vm.updateTodo(todo.key, todo.done)" type="checkbox" ng-model="todo.done">
                     </div>
                     <span class="done-{{todo.done}}">{{todo.date}}: {{todo.text}}</span>
                 </li>
@@ -45,8 +45,8 @@
     </div>
 </div>
 
-<script src="js/jquery-1.11.3.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="vendor/jquery-1.11.3.min.js"></script>
+<script src="vendor/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 $( document ).ready(function() {

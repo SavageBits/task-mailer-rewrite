@@ -1,13 +1,13 @@
 <div class="panel-body">
-    <form ng-submit="todoCtrl.createTodo()">
+    <form ng-submit="vm.createTodo()">
         <div class="form-group">
             <label for="inputTodoText">what's happening</label>
-            <input class="form-control" id="inputTodoText" type="text" ng-model="todoCtrl.description"  size="30"
+            <input class="form-control" id="inputTodoText" type="text" ng-model="vm.description"  size="30"
                    placeholder="add new todo here">
         </div>
         <div class="form-group">
             <label for="inputTodoDate">when it be</label>
-            <input class="form-control" id="inputTodoDate" type="date" ng-model="todoCtrl.taskDate">
+            <input class="form-control" id="inputTodoDate" type="date" ng-model="vm.taskDate">
         </div>
         <input class="btn btn-primary btn-sm" type="submit" value="add">
     </form>
