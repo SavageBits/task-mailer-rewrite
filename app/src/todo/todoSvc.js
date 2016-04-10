@@ -1,6 +1,6 @@
 //this is good but we're using firebase - http://stackoverflow.com/questions/21989300/calling-service-for-factory-in-controller
 
-function TodoSvc(todoDb) {
+function TodoSvc($timeout, todoDb) {
     var TodoSvc = {};
 
     TodoSvc.todos = [];
@@ -103,10 +103,10 @@ function TodoSvc(todoDb) {
               date: taskDate,
               done: false
             };
-            
-            console.log(task);
-            
-            self.addTodo(task);            
+                        
+            $timeout(function() {
+              self.addTodo(task);  
+            }, 0);                        
           }
         );                               
     };
